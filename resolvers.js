@@ -258,14 +258,8 @@ const resolvers = {
       return order;
     },
     removeFromCart: async (parent, args) => {
-      await Order.updateOne(
-        { id: args.id },
-        {
-          cancelled: true,
-        }
-      );
-      const order = await Order.findById(args.id);
-      return order;
+      const x = await Order.findByIdAndDelete(args.id);
+      return x;
     },
     checkOrders: async (parent, args, context, info) => {
       await Order.updateMany(
