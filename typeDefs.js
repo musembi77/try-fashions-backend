@@ -109,7 +109,8 @@ type Mutation{
     addOrder(
         product:ID!
         customer:ID!
-        size: String        
+        size: String       
+        quantity:Int 
     ): Order
     addReview(
         message: String

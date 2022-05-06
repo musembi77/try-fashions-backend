@@ -7,7 +7,7 @@ export const OrderSchema = new Schema(
   {
     product: { type: Schema.Types.ObjectId, ref: "Product" },
     customer: { type: Schema.Types.ObjectId, ref: "Customer" },
-    quantity: { type: Number, default: 1 },
+    quantity: { type: Number },
     size: { type: String },
     transaction: { type: Schema.Types.ObjectId, ref: "Transaction" },
     cancelled: { type: Boolean, default: false },

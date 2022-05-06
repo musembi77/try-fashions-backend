@@ -207,12 +207,13 @@ const resolvers = {
       return customer;
     },
     addOrder: async (parent, args, context, info) => {
-      const { product, customer, size } = args;
+      const { product, customer, size, quantity } = args;
 
       let newOrder = new Order({
         product,
         customer,
         size,
+        quantity,
       });
 
       const order = await newOrder.save();
@@ -257,8 +258,14 @@ const resolvers = {
       return order;
     },
     removeFromCart: async (parent, args) => {
-      let removed = await Order.findByIdAndRemove(args.id);
-      return removed;
+      await Order.updateOne(
+        { id: args.id },
+        {
+          cancelled: true,
+        }
+      );
+      const order = await Order.findById(args.id);
+      return order;
     },
     checkOrders: async (parent, args, context, info) => {
       await Order.updateMany(
