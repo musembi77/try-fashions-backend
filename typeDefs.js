@@ -11,7 +11,10 @@ type Product {
     subCategory: String!
     deleted: Boolean
     createdAt: String
-    photos:[String]
+    image1:String
+	image2:String
+	image3:String
+	image4:String
     description: String
 
     reviews: [Review]
@@ -96,7 +99,10 @@ type Mutation{
         subCategory: String
         colors:[String]
         sizes:[String]
-        photos: [String]
+        image1:String
+		image2:String
+		image3:String
+		image4:String
         description: String
     ):Product
     addCustomer(
