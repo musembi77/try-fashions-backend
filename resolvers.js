@@ -192,6 +192,10 @@ const resolvers = {
       const product = await newProduct.save();
       return product;
     },
+    deleteProduct: async (parent, args) => {
+      const deletedproduct = await Order.findByIdAndDelete(args.id);
+      return deletedproduct ;
+    },
     addCustomer: async (parent, args, context, info) => {
       const { name, email, password, photoUrl, phoneNumber } = args;
 

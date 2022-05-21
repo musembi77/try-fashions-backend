@@ -105,6 +105,9 @@ type Mutation{
 		image4:String
         description: String
     ):Product
+    deleteProduct(
+        id:ID!
+    ): Product
     addCustomer(
         name: String
         email: String
